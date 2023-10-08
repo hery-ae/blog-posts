@@ -6,14 +6,14 @@ import SidebarLayout from "../../components/sidebar-layout";
 const Page: NextPageWithLayout = () => {
     return (
         <>
-            <div className={ 'row mb-3' }>
-                <div className={ 'col' }>
-                    <h3 className={ 'my-0 fw-bold' }>{ 'Lorem Ipsum' }</h3>
-                    <p className={ 'text-muted small' }>{ 'January 1, 2021 by Mark' }</p>
+            <div className="row mb-3">
+                <div className="col">
+                    <h3 className="my-0 fw-bold">{ 'Lorem Ipsum' }</h3>
+                    <p className="text-muted small">{ 'January 1, 2021 by Mark' }</p>
                 </div>
             </div>
-            <div className={ 'row mb-3' }>
-                <div className={ 'col' }>
+            <div className="row mb-3">
+                <div className="col">
                     <p>
                         Lorem ipsum dolor sit amet, consectur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

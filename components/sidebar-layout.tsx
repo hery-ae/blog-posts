@@ -7,11 +7,13 @@ type LayoutProps = {
 
 export default function SidebarLayout({ children }: LayoutProps) {
     return (
-        <>
-            <main className={ 'col-12 col-lg-8 d-lg-inline-block align-top mt-4 mb-5' }>{ children }</main>
-            <aside className={ 'col-12 col-lg-4 d-lg-inline-block align-top mt-4 mb-5 position-sticky top-0' }>
-                <Sidebar />
-            </aside>
-        </>
+        <div className="container-fluid">
+            <div className="row">
+                <main className="col-12 col-lg-8 mt-4 mb-3 mb-lg-5">{ children }</main>
+                <aside className="col-12 col-md-6 col-lg-4 mt-0 mb-5 mt-lg-4" style={{ minWidth: '316px' }}>
+                    <Sidebar />
+                </aside>
+            </div>
+        </div>
     )
 }

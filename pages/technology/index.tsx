@@ -6,9 +6,9 @@ export default function Page() {
             <div className={ 'row mb-3' }>
                 <div className={ 'col-12 position-relative px-0' }>
                     <img src="//localhost:8080/blog-posts/images/1084-1920x1080-grayscale.jpg" alt="highlight" className={ 'img-fluid rounded' } />
-                    <h3 className={ 'position-absolute start-0 top-50 px-3 text-white fw-bold' }>Science</h3>
+                    <h3 className={ 'position-absolute start-0 top-50 px-3 text-white fw-bold' }>Technology</h3>
                     <h2 className={ 'position-absolute start-0 top-50 mt-3 p-3' }>
-                        <Link href={ '/science/lorem-ipsum' }>
+                        <Link href={ '/technology/lorem-ipsum' }>
                             <a className={ 'text-white text-decoration-none' }>Lorem Ipsum Dolor Sit Amet, Consectur Adipiscing Elit</a>
                         </Link>
                     </h2>

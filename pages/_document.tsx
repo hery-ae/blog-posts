@@ -4,7 +4,7 @@ export default function Document() {
     return (
         <Html>
             <Head />
-            <body className="mw-100 mx-auto" style={{ 'width': '960px' }}>
+            <body className="mw-100 mx-auto" style={{ width: '960px' }}>
                 <Main />
                 <NextScript />
             </body>
