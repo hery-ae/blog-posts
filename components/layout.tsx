@@ -19,7 +19,7 @@ export default function Layout({ children }: LayoutProps) {
             </Head>
             <Header />
             <Navbar />
-            { children }
+            <main className={ 'container-fluid mt-3 mb-5' }>{ children }</main>
             <Footer />
         </>
     )

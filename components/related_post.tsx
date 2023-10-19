@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
-export default function Sidebar() {
+export default function RelatedPost() {
     return (
-        <>
+        <div className="col-12 col-md-6 col-lg-4" style={{ minWidth: '316px' }}>
             <div className="row">
                 <div className="col">
                     <h4 className="fst-italic">{ 'Related posts' }</h4>
-              </div>
-          </div>
+                </div>
+            </div>
             <div className="row">
                 <div className="col">
                     <ul className="list-unstyled">
@@ -30,8 +30,8 @@ export default function Sidebar() {
                             </div>
                         </li>
                     </ul>
-              </div>
-          </div>
-        </>
+                </div>
+            </div>
+        </div>
     )
 }
