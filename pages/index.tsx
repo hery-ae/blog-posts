@@ -2,19 +2,79 @@ import Post from "../components/post"
 
 export default function Page({ posts }) {
     return (
-        <div className="row mb-3">
-            <div className="col-12 position-relative px-0">
+        <>
+            <div className="row mb-3">
                 <Post
+                    priority={ 1 }
                     position={ 1 }
                     pathname={ `/${posts.data[0].category.name}/${posts.data[0].pathname}` }
                     category={ posts.data[0].category.verbose_name }
                     title={ posts.data[0].title }
-                    image={ process.env.API_URL + posts.data[0].image }
+                    image={ posts.data[0].image }
                 />
             </div>
-        </div>
+            <div className="row mb-3 px-1 px-md-0 justify-content-between">
+                {
+                    posts.data.filter( post => post.priority === 2 ).slice( 0, 2 ).map((post, key) => (
+                        <Post
+                            key={ post.id }
+                            priority={ post.priority }
+                            position={ key + 1 }
+                            pathname={ `/${post.category.name}/${post.pathname}` }
+                            category={ post.category.verbose_name }
+                            title={ post.title }
+                            image={ post.image }
+                        />
+                    ))
+                }
+            </div>
+            <div className="row mb-3 px-1 px-md-0 justify-content-center justify-content-md-start">
+                {
+                    posts.data.filter( post => post.priority > 2 ).slice( 0, 3 ).map((post, key) => (
+                        <Post
+                            key={ post.id }
+                            priority={ post.priority }
+                            position={ key + 1 }
+                            pathname={ `/${post.category.name}/${post.pathname}` }
+                            category={ post.category.verbose_name }
+                            title={ post.title }
+                            image={ post.image }
+                        />
+                    ))
+                }
+            </div>
+            <div className="row mb-3 px-1 px-md-0 justify-content-center justify-content-md-start">
+                {
+                    posts.data.filter( post => post.priority > 2 ).slice( 3, 6 ).map((post, key) => (
+                        <Post
+                            key={ post.id }
+                            priority={ post.priority }
+                            position={ key + 1 }
+                            pathname={ `/${post.category.name}/${post.pathname}` }
+                            category={ post.category.verbose_name }
+                            title={ post.title }
+                            image={ post.image }
+                        />
+                    ))
+                }
+            </div>
+            <div className="row mb-3 px-1 px-md-0 justify-content-center justify-content-md-start">
+                {
+                    posts.data.filter( post => post.priority > 2 ).slice( 6, 9 ).map((post, key) => (
+                        <Post
+                            key={ post.id }
+                            priority={ post.priority }
+                            position={ key + 1 }
+                            pathname={ `/${post.category.name}/${post.pathname}` }
+                            category={ post.category.verbose_name }
+                            title={ post.title }
+                            image={ post.image }
+                        />
+                    ))
+                }
+            </div>
+        </>
     )
-    {/*    return <List posts={posts} />*/}
 }
 
 export async function getServerSideProps() {
