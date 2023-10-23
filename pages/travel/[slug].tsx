@@ -1,9 +1,9 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement } from "react";
 import { NextPageWithLayout } from "../_app";
 import Layout from "../../components/layout";
 import Detail from "../../components/detail";
 import RelatedPost from "../../components/related_post";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { GetServerSideProps } from "next";
 import Post from "../../components/post";
 
 const Page: NextPageWithLayout<{ post: { title: string, date: string, author: string, content: string, related_posts: [] }}> = ({ post }) => {
@@ -35,9 +35,12 @@ const Page: NextPageWithLayout<{ post: { title: string, date: string, author: st
     )
 }
 
-Page.getLayout = function getLayout(page: ReactElement) {
+Page.getLayout = function getLayout(page: ReactElement, appTitle: string) {
     return (
-        <Layout>
+        <Layout
+            appTitle={ appTitle }
+            pageTitle={ `${ page.props.post.title } - ${ page.props.post.category.verbose_name } - ${ appTitle }` }
+        >
             <div className="row">
                 { page }
             </div>
@@ -46,7 +49,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
 }
 
 export const getServerSideProps: GetServerSideProps = async({ params }) => {
-    const url = `${process.env.API_URL}/travel/${params.slug}.json`
+    const url = `${process.env.API_URL}/travel/${params.slug}`
     const res = await fetch(url, {
         headers: { Authorization: `Bearer ${process.env.API_TOKEN}` }
     })

@@ -1,11 +1,11 @@
-import { PropsWithChildren, ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import Layout from './../components/layout'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-    getLayout?: (page: ReactElement) => ReactNode
+    getLayout?: (page: ReactElement, appTitle: string) => ReactNode
 }
 
 type AppPropsWithLayout = AppProps & {
@@ -13,11 +13,18 @@ type AppPropsWithLayout = AppProps & {
 }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-    const getLayout = Component.getLayout ?? ((page) => {
-        return (
-            <Layout>{ page }</Layout>
-        )
-    })
+    const appTitle = 'LINTING POST'
 
-    return getLayout(<Component {...pageProps} />)
+    if (Component.getLayout) {
+        return Component.getLayout(<Component {...pageProps} />, appTitle)
+    }
+
+    return (
+        <Layout
+            appTitle={ appTitle }
+            pageTitle={ pageProps.pageTitle ? `${ pageProps.pageTitle } - ${ appTitle }` : appTitle }
+        >
+            <Component {...pageProps} />
+        </Layout>
+    )
 }

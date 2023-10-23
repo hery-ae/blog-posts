@@ -1,13 +1,17 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+type FooterProps = {
+    appTitle: string
+}
+
 const links: Array<{ text: string, path: string }> = [
     { text: 'Privacy', path: '/privacy' },
     { text: 'Terms', path: '/terms' },
     { text: 'About', path: '/about' },
 ]
 
-export default function Footer() {
+export default function Footer({ appTitle }: FooterProps) {
     return (
         <footer className={ 'py-1 bg-body-tertiary position-relative' }>
             <ul className={ 'nav justify-content-center border-bottom pb-1' }>
@@ -29,7 +33,7 @@ export default function Footer() {
                     ))
                 }
             </ul>
-            <p className={ 'text-center text-body-tertiary my-2 small' }>&copy; { '2023 Blog Posts' }</p>
+            <p className={ 'text-center text-body-tertiary my-2 small' }>&copy; { `2023 ${ appTitle }` }</p>
         </footer>
     )
 }

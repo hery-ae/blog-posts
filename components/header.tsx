@@ -1,6 +1,10 @@
 import Link from 'next/link'
 
-export default function Header() {
+type HeaderProps = {
+    appTitle: string
+}
+
+export default function Header({ appTitle }: HeaderProps) {
     return (
         <header className={ 'd-flex flex-wrap align-items-center justify-content-center justify-content-md-between gap-2 py-3' }>
             <div className={ 'col-auto col-md-3 my-auto' }>
@@ -10,7 +14,7 @@ export default function Header() {
                     </a>
                 </Link>
             </div>
-            <h1 className={ 'h2 my-0 fw-bold' } style={{ fontFamily: '\"Playfair Display\", Georgia, \"Times New Roman\", serif' }}>{ 'Blog Posts' }</h1>
+            <h1 className={ 'h2 my-0 fw-bold' } style={{ fontFamily: '\"Playfair Display\", Georgia, \"Times New Roman\", serif' }}>{ appTitle }</h1>
             <div className={ 'col-auto col-md-3 text-end d-none d-md-block' }>
                 <Link href={ '#' }>
                     <a className={ 'link-secondary' } aria-label={ 'Search' }>

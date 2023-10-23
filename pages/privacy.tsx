@@ -13,3 +13,13 @@ export default function Page() {
         </div>
     )
 }
+
+export function getStaticProps() {
+    const pageTitle = 'Privacy Policy'
+
+    return {
+        props: {
+            pageTitle,
+        }
+    }
+}

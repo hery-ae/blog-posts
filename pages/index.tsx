@@ -4,14 +4,18 @@ export default function Page({ posts }) {
     return (
         <>
             <div className="row mb-3">
-                <Post
-                    priority={ 1 }
-                    position={ 1 }
-                    pathname={ `/${posts.data[0].category.name}/${posts.data[0].name}` }
-                    category={ posts.data[0].category.verbose_name }
-                    title={ posts.data[0].title }
-                    thumbnail={ posts.data[0].thumbnail }
-                />
+            {
+                posts.data.length >= 1 && (
+                    <Post
+                        priority={ 1 }
+                        position={ 1 }
+                        pathname={ `/${posts.data[0].category.name}/${posts.data[0].name}` }
+                        category={ posts.data[0].category.verbose_name }
+                        title={ posts.data[0].title }
+                        thumbnail={ posts.data[0].thumbnail }
+                    />
+                )
+            }
             </div>
             <div className="row mb-3 px-1 px-md-0 justify-content-between">
                 {
@@ -78,9 +82,10 @@ export default function Page({ posts }) {
 }
 
 export async function getServerSideProps() {
-    const url = `${process.env.API_URL}/posts.json`
+    const url = `${process.env.API_URL}/posts`
+
     const res = await fetch(url, {
-        headers: { Authorization: `Bearer ${process.env.API_TOKEN}` }
+        headers: { Authorization: process.env.API_TOKEN }
     })
 
     const posts = await res.json()

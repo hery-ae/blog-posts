@@ -14,3 +14,13 @@ export default function Page() {
         </div>
     )
 }
+
+export function getStaticProps() {
+    const pageTitle = 'Terms of Service'
+
+    return {
+        props: {
+            pageTitle,
+        }
+    }
+}

@@ -2,8 +2,8 @@ import Link from "next/link"
 
 export default function Page() {
     return (
-        <div className={ 'row mb-3' }>
-            <div className={ 'col-12 position-relative' }>
+        <div className="row mb-3">
+            <div className="col-12 position-relative">
                 <blockquote className="blockquote">
                     Lorem ipsum dolor sit amet, consectur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -13,4 +13,14 @@ export default function Page() {
             </div>
         </div>
     )
+}
+
+export function getStaticProps() {
+    const pageTitle = 'About'
+
+    return {
+        props: {
+            pageTitle,
+        }
+    }
 }
