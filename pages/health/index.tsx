@@ -7,10 +7,10 @@ export default function Page({ posts }) {
                 <Post
                     priority={ 1 }
                     position={ 1 }
-                    pathname={ `/${posts.data[0].category.name}/${posts.data[0].pathname}` }
+                    pathname={ `/${posts.data[0].category.name}/${posts.data[0].name}` }
                     category={ posts.data[0].category.verbose_name }
                     title={ posts.data[0].title }
-                    image={ posts.data[0].image }
+                    thumbnail={ posts.data[0].thumbnail }
                 />
             </div>
             <div className="row mb-3 px-1 px-md-0 justify-content-between">
@@ -20,10 +20,10 @@ export default function Page({ posts }) {
                             key={ post.id }
                             priority={ post.priority }
                             position={ key + 1 }
-                            pathname={ `/${post.category.name}/${post.pathname}` }
+                            pathname={ `/${post.category.name}/${post.name}` }
                             category={ post.category.verbose_name }
                             title={ post.title }
-                            image={ post.image }
+                            thumbnail={ post.thumbnail }
                         />
                     ))
                 }
@@ -35,10 +35,10 @@ export default function Page({ posts }) {
                             key={ post.id }
                             priority={ post.priority }
                             position={ key + 1 }
-                            pathname={ `/${post.category.name}/${post.pathname}` }
+                            pathname={ `/${post.category.name}/${post.name}` }
                             category={ post.category.verbose_name }
                             title={ post.title }
-                            image={ post.image }
+                            thumbnail={ post.thumbnail }
                         />
                     ))
                 }
@@ -50,10 +50,10 @@ export default function Page({ posts }) {
                             key={ post.id }
                             priority={ post.priority }
                             position={ key + 1 }
-                            pathname={ `/${post.category.name}/${post.pathname}` }
+                            pathname={ `/${post.category.name}/${post.name}` }
                             category={ post.category.verbose_name }
                             title={ post.title }
-                            image={ post.image }
+                            thumbnail={ post.thumbnail }
                         />
                     ))
                 }
@@ -62,13 +62,13 @@ export default function Page({ posts }) {
                 {
                     posts.data.filter( post => post.priority > 2 ).slice( 6, 9 ).map((post, key) => (
                         <Post
-                            key={ post.id }
-                            priority={ post.priority }
-                            position={ key + 1 }
-                            pathname={ `/${post.category.name}/${post.pathname}` }
-                            category={ post.category.verbose_name }
-                            title={ post.title }
-                            image={ post.image }
+                        key={ post.id }
+                        priority={ post.priority }
+                        position={ key + 1 }
+                        pathname={ `/${post.category.name}/${post.name}` }
+                        category={ post.category.verbose_name }
+                        title={ post.title }
+                        thumbnail={ post.thumbnail }
                         />
                     ))
                 }

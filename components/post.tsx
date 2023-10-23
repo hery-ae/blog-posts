@@ -3,20 +3,21 @@ import Link from 'next/link'
 type PostProps = {
     priority: number,
     position: number,
-    pathname: string,
     category: string,
+    pathname: string,
     title: string,
-    image: string,
+    thumbnail: string,
+    updatedAt?: string,
 }
 
-export default function Post({ priority, position, pathname, category, title, image }: PostProps) {
+export default function Post({ priority, position, pathname, category, title, thumbnail, updatedAt= null }: PostProps) {
     switch( priority ) {
         case 3: {
             return (
                 <>
                     { position === 1 && (
                         <div className="col-auto col-md-4 px-0 pe-md-3">
-                            <img src={ image } alt={ title } className="img-fluid" />
+                            <img src={ thumbnail } alt={ title } className="img-fluid" />
                             <h3 className="my-0 px-1 py-2 border-start border-end" style={{ height: '108px' }}>
                                 <Link href={ pathname }>
                                     <a className="link-dark text-decoration-none">{ title }</a>
@@ -27,7 +28,7 @@ export default function Post({ priority, position, pathname, category, title, im
                     )}
                     { position === 2 && (
                         <div className="col-auto col-md-4 px-0 px-md-3">
-                            <img src={ image } alt={ title } className="img-fluid" />
+                            <img src={ thumbnail } alt={ title } className="img-fluid" />
                             <h3 className="my-0 px-1 py-2 border-start border-end" style={{ height: '108px' }}>
                                 <Link href={ pathname }>
                                     <a className="link-dark text-decoration-none">{ title }</a>
@@ -38,7 +39,7 @@ export default function Post({ priority, position, pathname, category, title, im
                     )}
                     { position === 3 && (
                         <div className="col-auto col-md-4 px-0 ps-md-3">
-                            <img src={ image } alt={ title } className="img-fluid" />
+                            <img src={ thumbnail } alt={ title } className="img-fluid" />
                             <h3 className="my-0 px-1 py-2 border-start border-end" style={{ height: '108px' }}>
                                 <Link href={ pathname }>
                                     <a className="link-dark text-decoration-none">{ title }</a>
@@ -65,7 +66,7 @@ export default function Post({ priority, position, pathname, category, title, im
                                     </h3>
                                 </div>
                                 <div className="col-auto ps-0">
-                                    <img src={ image } alt={ title } className="img-fluid" />
+                                    <img src={ thumbnail } alt={ title } className="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -82,7 +83,7 @@ export default function Post({ priority, position, pathname, category, title, im
                                     </h3>
                                 </div>
                                 <div className="col-auto ps-0 pe-md-0">
-                                    <img src={ image } alt={ title } className="img-fluid" />
+                                    <img src={ thumbnail } alt={ title } className="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -90,17 +91,36 @@ export default function Post({ priority, position, pathname, category, title, im
                 </>
             )
         }
-        default: {
+        case 1: {
             return (
                 <>
                     <div className="col-12 position-relative px-0">
-                        <img src={ image } alt="highlight" className="img-fluid rounded" />
+                        <img src={ thumbnail } alt="highlight" className="img-fluid rounded" />
                         <h3 className="position-absolute start-0 top-50 px-3 text-white fw-bold">{ category }</h3>
                         <h2 className="position-absolute start-0 top-50 mt-3 p-3">
                             <Link href={ pathname }>
                                 <a className="text-white text-decoration-none">{ title }</a>
                             </Link>
                         </h2>
+                    </div>
+                </>
+            )
+        }
+        default: {
+            return (
+                <>
+                    <div className="row gap-2 border-top mx-0 py-3">
+                        <div className="col-auto px-0">
+                            <img src={ thumbnail } width={ 112 } height={ 112 } alt={ title } />
+                        </div>
+                        <div className="col-7 px-0">
+                            <h5 className="my-0">
+                                <Link href={ pathname }>
+                                    <a className="link-dark text-decoration-none">{ title }</a>
+                                </Link>
+                            </h5>
+                            <p className="text-muted small">{ updatedAt }</p>
+                        </div>
                     </div>
                 </>
             )

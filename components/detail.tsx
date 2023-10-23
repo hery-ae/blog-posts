@@ -1,5 +1,3 @@
-import { ReactNode } from "react"
-
 type PostProps = {
     title: string,
     date: string,
